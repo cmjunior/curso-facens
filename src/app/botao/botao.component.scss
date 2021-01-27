@@ -1,0 +1,12 @@
+.container {
+    border: 1px solid #f00;
+    margin: 12px;
+    padding: 24px;
+
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+        background-color: #e5e5e5;
+    }
+}

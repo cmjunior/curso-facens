@@ -1,0 +1,31 @@
+<div class="container">
+
+    <ul>
+        <li (click)="selecionarTarefa(tarefa)" *ngFor="let tarefa of tarefas$ | async">{{ tarefa.id}} - {{ tarefa.name }}</li>
+    </ul>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Cadastro de Tarefa</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formulario">
+                <mat-form-field>
+                    <input formControlName="name" placeholder="Nome" matInput>
+                    <mat-hint *ngIf="formulario.get('name')?.hasError('required')">Campo obrigatório</mat-hint>
+                    <mat-hint *ngIf="formulario.get('name')?.hasError('minlength')">Tamanho incorreto</mat-hint>
+                </mat-form-field>
+                
+                <mat-form-field style="margin-top: 24px;">
+                    <input formControlName="prioridade" placeholder="Prioridade" matInput>
+                </mat-form-field>                
+            </form>
+        </mat-card-content>
+        <mat-card-actions>            
+            <button [disabled]="!(formulario.valid)"
+                (click)="salvarTarefa()"
+                mat-button>Salvar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
